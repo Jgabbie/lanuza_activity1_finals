@@ -11,12 +11,47 @@ export default function CheckoutPage() {
     const [deliveryAddress, setDeliveryAddress] = useState("")
     const [paymentMethod, setPaymentMethod] = useState("")
     const [message, setMessage] = useState("")
+    const [errors, setErrors] = useState({})
 
 
     const handleCheckout = (e) => {
         e.preventDefault()
-        if (!fullName || !email || !phoneNumber || !deliveryAddress || !paymentMethod) {
-            setMessage("Please complete all required fields.")
+
+        const newErrors = {}
+        if (!fullName.trim()) {
+            newErrors.fullName = "Full name is required"
+        } else if (fullName.trim().length < 3) {
+            newErrors.fullName = "Please enter a valid full name."
+        } else if (!/^[a-zA-Z\s.'-']+$/.test(fullName)) {
+            newErrors.fullName = "Full name must only contain letters"
+        }
+
+        if (!email.trim()) {
+            newErrors.email = "Email is required"
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = "Please enter a valid email address."
+        }
+
+        if (!phoneNumber.trim()) {
+            newErrors.phoneNumber = "Phone number is required"
+        } else if (!/^\d{10,11}$/.test(email)) {
+            newErrors.phoneNumber = "Please number must contain 10 to 11 digits."
+        }
+
+        if (!deliveryAddress.trim()) {
+            newErrors.deliveryAddress = "Delivery address is required"
+        } else if (deliveryAddress.trim().length < 5) {
+            newErrors.deliveryAddress = "Please enter a complete delivery address"
+        }
+
+        if (!paymentMethod) {
+            newErrors.paymentMethod = "Please select a payment method."
+        }
+
+        setErrors(newErrors)
+
+        if (Object.keys(newErrors).length > 0) {
+            setMessage("Please correct the highlighted fields")
             return
         }
 
@@ -68,8 +103,23 @@ export default function CheckoutPage() {
                                             type='text'
                                             placeholder='Enter your full name'
                                             value={fullName}
-                                            onChange={(e) => setFullName(e.target.value)}
+                                            maxLength={50}
+                                            isInvalid={!!errors.fullName}
+                                            onChange={(e) => {
+                                                setFullName(e.target.value)
+
+                                                if (errors.fullName) {
+                                                    setErrors({
+                                                        ...errors,
+                                                        fullName: ""
+                                                    })
+                                                }
+                                            }}
                                         />
+
+                                        <Form.Control.Feedback type='invalid'>
+                                            {errors.fullName}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Form.Group className='mb-3'>
@@ -81,8 +131,23 @@ export default function CheckoutPage() {
                                             type='email'
                                             placeholder='Enter your email'
                                             value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            maxLength={100}
+                                            isInvalid={!!errors.email}
+                                            onChange={(e) => {
+                                                setEmail(e.target.value)
+
+                                                if (errors.email) {
+                                                    setErrors({
+                                                        ...errors,
+                                                        email: ""
+                                                    })
+                                                }
+                                            }}
                                         />
+
+                                        <Form.Control.Feedback type='invalid'>
+                                            {errors.email}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Form.Group className='mb-3'>
@@ -94,8 +159,23 @@ export default function CheckoutPage() {
                                             type='tel'
                                             placeholder='Enter your phone number'
                                             value={phoneNumber}
-                                            onChange={(e) => setPhoneNumber(e.target.value)}
+                                            maxLength={11}
+                                            isInvalid={!!errors.phoneNumber}
+                                            onChange={(e) => {
+                                                setPhoneNumber(e.target.value)
+
+                                                if (errors.phoneNumber) {
+                                                    setErrors({
+                                                        ...errors,
+                                                        phoneNumber: ""
+                                                    })
+                                                }
+                                            }}
                                         />
+
+                                        <Form.Control.Feedback type='invalid'>
+                                            {errors.phoneNumber}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Form.Group className='mb-3'>
@@ -108,8 +188,23 @@ export default function CheckoutPage() {
                                             rows={3}
                                             placeholder='Enter your complete delivery address'
                                             value={deliveryAddress}
-                                            onChange={(e) => setDeliveryAddress(e.target.value)}
+                                            maxLength={150}
+                                            isInvalid={!!errors.deliveryAddress}
+                                            onChange={(e) => {
+                                                setDeliveryAddress(e.target.value)
+
+                                                if (errors.deliveryAddress) {
+                                                    setErrors({
+                                                        ...errors,
+                                                        deliveryAddress: ""
+                                                    })
+                                                }
+                                            }}
                                         />
+
+                                        <Form.Control.Feedback type='invalid'>
+                                            {errors.deliveryAddress}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Form.Group className='mb-3'>
@@ -119,7 +214,17 @@ export default function CheckoutPage() {
 
                                         <Form.Select
                                             value={paymentMethod}
-                                            onChange={(e) => setPaymentMethod(e.target.value)}
+                                            isInvalid={!!errors.paymentMethod}
+                                            onChange={(e) => {
+                                                setPaymentMethod(e.target.value)
+
+                                                if (errors.paymentMethod) {
+                                                    setErrors({
+                                                        ...errors,
+                                                        paymentMethod: ""
+                                                    })
+                                                }
+                                            }}
                                         >
                                             <option value="">
                                                 Select payment method
@@ -137,6 +242,10 @@ export default function CheckoutPage() {
                                                 Credit / Debit Card
                                             </option>
                                         </Form.Select>
+
+                                        <Form.Control.Feedback type='invalid'>
+                                            {errors.paymentMethod}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Button

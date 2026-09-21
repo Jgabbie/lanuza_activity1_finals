@@ -2,6 +2,7 @@ import { Card, Button } from 'react-bootstrap'
 import "../App.css"
 
 export default function ProductPage({ product, onBack, addToCart }) {
+
     if (!product) {
         return (
             <div className='container py-5'>
@@ -41,7 +42,7 @@ export default function ProductPage({ product, onBack, addToCart }) {
                 <div className='col-md-6'>
                     <Card className='border-0 shadow-sm rounded-xl'>
                         <Card.Body className='p-4'>
-                            <p className='text-primary fw-semibold mb-2'>
+                            <p className='text-[#305797] fw-semibold mb-2'>
                                 {product.category}
                             </p>
 

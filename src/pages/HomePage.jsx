@@ -283,7 +283,7 @@ export default function HomePage({ cartItems, setCartItems }) {
                                         />
 
                                         <Card.Body className='p-4'>
-                                            <span className='text-sm text-blue-600 font-medium'>
+                                            <span className='text-sm text-[#305797] font-medium'>
                                                 {product.category}
                                             </span>
 
@@ -304,7 +304,7 @@ export default function HomePage({ cartItems, setCartItems }) {
                                             <Button
                                                 className='w-100 mb-2'
                                                 style={{
-                                                    Color: '#305797',
+                                                    color: '#305797',
                                                     borderColor: '#305797',
                                                     backgroundColor: 'transparent'
                                                 }}
@@ -363,6 +363,7 @@ export default function HomePage({ cartItems, setCartItems }) {
                                             currentPage - 1
                                         )
                                     }
+                                    linkStyle={{ color: '#305797' }}
                                 />
 
                                 {Array.from(
@@ -373,20 +374,16 @@ export default function HomePage({ cartItems, setCartItems }) {
                                             <Pagination.Item
                                                 key={pageNumber}
                                                 active={pageNumber === currentPage}
-                                                style={
-                                                    pageNumber === currentPage
-                                                        ? {
-                                                            backgroundColor: '#305797',
-                                                            borderColor: '#305797'
-                                                        } : {
-                                                            color: '#305797'
-                                                        }
-                                                }
                                                 onClick={() =>
                                                     handlePageChange(
                                                         pageNumber
                                                     )
                                                 }
+                                                linkStyle={{
+                                                    backgroundColor: pageNumber === currentPage ? '#305797' : '#fff',
+                                                    borderColor: pageNumber === currentPage ? '#305797' : '#dee2e6',
+                                                    color: pageNumber === currentPage ? '#fff' : '#305797'
+                                                }}
                                             >
                                                 {pageNumber}
                                             </Pagination.Item>
@@ -399,6 +396,7 @@ export default function HomePage({ cartItems, setCartItems }) {
                                     onClick={() => handlePageChange(
                                         currentPage + 1
                                     )}
+                                    linkStyle={{ color: '#305797' }}
                                 />
                             </Pagination>
                         </div>
