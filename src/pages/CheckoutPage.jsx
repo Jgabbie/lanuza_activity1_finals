@@ -18,29 +18,23 @@ export default function CheckoutPage() {
         e.preventDefault()
 
         const newErrors = {}
-        if (!fullName.trim()) {
+        if (!fullName) {
             newErrors.fullName = "Full name is required"
-        } else if (fullName.trim().length < 3) {
+        } else if (fullName.length < 3) {
             newErrors.fullName = "Please enter a valid full name."
-        } else if (!/^[a-zA-Z\s.'-']+$/.test(fullName)) {
-            newErrors.fullName = "Full name must only contain letters"
         }
 
-        if (!email.trim()) {
+        if (!email) {
             newErrors.email = "Email is required"
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            newErrors.email = "Please enter a valid email address."
         }
 
-        if (!phoneNumber.trim()) {
+        if (!phoneNumber) {
             newErrors.phoneNumber = "Phone number is required"
-        } else if (!/^\d{10,11}$/.test(email)) {
-            newErrors.phoneNumber = "Please number must contain 10 to 11 digits."
         }
 
-        if (!deliveryAddress.trim()) {
+        if (!deliveryAddress) {
             newErrors.deliveryAddress = "Delivery address is required"
-        } else if (deliveryAddress.trim().length < 5) {
+        } else if (deliveryAddress.length < 5) {
             newErrors.deliveryAddress = "Please enter a complete delivery address"
         }
 
