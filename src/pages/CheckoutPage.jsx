@@ -280,7 +280,10 @@ export default function CheckoutPage() {
                     <Button
                         className='w-100'
                         size='lg'
-                        onClick={() => setShowSuccessModal(false)}
+                        onClick={() => {
+                            setShowSuccessModal(false)
+                            window.location.reload()
+                        }}
                         style={{
                             backgroundColor: '#305797',
                             borderColor: '#305797'
