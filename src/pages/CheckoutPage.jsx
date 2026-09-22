@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Button, Form, Alert, Container, Row, Col } from 'react-bootstrap'
+import { Card, Button, Form, Container, Row, Col, Modal, Alert } from 'react-bootstrap'
 import "../App.css"
 
 
@@ -12,6 +12,7 @@ export default function CheckoutPage() {
     const [paymentMethod, setPaymentMethod] = useState("")
     const [message, setMessage] = useState("")
     const [errors, setErrors] = useState({})
+    const [showSuccessModal, setShowSuccessModal] = useState(false)
 
 
     const handleCheckout = (e) => {
@@ -61,7 +62,7 @@ export default function CheckoutPage() {
 
         console.log(checkoutData)
 
-        alert("Order placed successfully!")
+        setShowSuccessModal(true)
     }
 
     return (
@@ -259,6 +260,36 @@ export default function CheckoutPage() {
                     </Col>
                 </Row>
             </Container>
+
+
+            <Modal
+                show={showSuccessModal}
+                onHide={() => setShowSuccessModal(false)}
+                centered
+                backdrop="static"
+            >
+                <Modal.Body className='text-center p-5'>
+                    <h3 className='fw-bold m-2'>
+                        Order Placed Successfully!
+                    </h3>
+
+                    <p className='text-mured mb-4'>
+                        Thank you for your order. Your order has been successfull placed.
+                    </p>
+
+                    <Button
+                        className='w-100'
+                        size='lg'
+                        onClick={() => setShowSuccessModal(false)}
+                        style={{
+                            backgroundColor: '#305797',
+                            borderColor: '#305797'
+                        }}
+                    >
+                        Continue
+                    </Button>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }
