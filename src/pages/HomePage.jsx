@@ -8,6 +8,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 1,
             name: "Misaka Mikoto Figurine",
+            description: "A Misaka Mikoto Figurine from the series called 'A certain magical index' and 'A certain scientific railgun' ",
             category: "Figures",
             price: "7500",
             stock: 4,
@@ -16,6 +17,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 2,
             name: "Yamada Ryo Plushie",
+            description: "A plushie from a TV Show called 'Bocchi the Rock'",
             category: "Plushies",
             price: "1500",
             stock: 5,
@@ -24,6 +26,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 3,
             name: "Cat Ears Miku Figurine",
+            description: "A Figurine of a famous vocaloid named 'Miku'",
             category: "Figures",
             price: "10500",
             stock: 3,
@@ -32,6 +35,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 4,
             name: "Hakui Koyori Figurine",
+            description: "A Figurine of a popular VTuber from HoloX generation of Hololive",
             category: "Figures",
             price: "22500",
             stock: 2,
@@ -40,6 +44,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 5,
             name: "Horimiya Plushie Set",
+            description: "A set of plushies of Main Characters from a TV Show called 'Horimiya'",
             category: "Plushies",
             price: "2500",
             stock: 5,
@@ -48,6 +53,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 6,
             name: "Saiki Kusuo Plushie",
+            description: "A plushie of Saiki Kusuo from a TV Show called 'Saiki'",
             category: "Plushies",
             price: "3000",
             stock: 7,
@@ -56,6 +62,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 7,
             name: "Hoshimachi Susei Plushie",
+            description: "A plushie of a famous utaite and Vtuber named 'Hoshimachi Suisei' from the Oth Generation of Hololive",
             category: "Plushies",
             price: "4500",
             stock: 3,
@@ -64,6 +71,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 8,
             name: "Berserk Griffith Figurine",
+            description: "A Figurine of the Main Villain from a known Dark Fantasy Manga called 'Berserk'",
             category: "Figures",
             price: "8500",
             stock: 16,
@@ -72,6 +80,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 9,
             name: "Berserk Guts Figurine",
+            description: "A Figurine of the Main Protagonist from a known Dark Fantasy Manga called 'Berserk'",
             category: "Figures",
             price: "12500",
             stock: 12,
@@ -80,6 +89,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 10,
             name: "Jujutsu Kaisen Poster",
+            description: "A Poster from a popular show called 'Jujutsu Kaisen'",
             category: "Posters",
             price: "1500",
             stock: 23,
@@ -88,6 +98,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 11,
             name: "Demon Slayer Card Set",
+            description: "A card set merch from a show called 'Demon Slayer'",
             category: "Cards",
             price: "2500",
             stock: 32,
@@ -96,6 +107,7 @@ export default function HomePage({ cartItems, setCartItems }) {
         {
             id: 12,
             name: "Naruto Card Collectibles",
+            description: "A card set merch from a show called 'Naruto'",
             category: "Cards",
             price: "3500",
             stock: 12,
